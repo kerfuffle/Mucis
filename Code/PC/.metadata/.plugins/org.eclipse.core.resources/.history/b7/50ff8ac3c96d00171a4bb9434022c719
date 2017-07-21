@@ -1,0 +1,8 @@
+package net.kerfuffle.MucisServer;
+
+import java.util.ArrayList;
+
+public class Playlist {
+
+	private ArrayList<Song> songs = new ArrayList<Song>();
+}
