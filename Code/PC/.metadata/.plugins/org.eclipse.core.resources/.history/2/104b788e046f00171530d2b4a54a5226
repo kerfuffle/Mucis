@@ -9,11 +9,6 @@ public class Account {
 	
 	private Library library;
 	
-	public Account(String username)
-	{
-		this.username=username;
-		initAccount();
-	}
 	
 	public void initAccount()
 	{

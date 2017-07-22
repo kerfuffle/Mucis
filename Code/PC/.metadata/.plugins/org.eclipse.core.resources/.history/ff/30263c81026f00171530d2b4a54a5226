@@ -1,0 +1,35 @@
+package net.kerfuffle.Utilities;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Util {
+
+	public static String readTextFile(String fileName)
+	{
+	        String line = null;
+	        String ret = "";
+	        try {
+	         
+	            FileReader fileReader = new FileReader(fileName);
+
+	            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+	            while((line = bufferedReader.readLine()) != null) 
+	            {
+	                ret+=line;
+	            }   
+
+	            bufferedReader.close();         
+	        }
+	        catch(IOException e) {
+	            e.printStackTrace();          
+	        }
+	        
+	        return ret;
+
+	}
+	
+}

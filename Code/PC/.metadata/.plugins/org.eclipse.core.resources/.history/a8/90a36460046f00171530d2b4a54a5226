@@ -9,16 +9,12 @@ public class Account {
 	
 	private Library library;
 	
-	public Account(String username)
-	{
-		this.username=username;
-		initAccount();
-	}
 	
 	public void initAccount()
 	{
 		library = new Library();
-		addPlaylists();
+		Playlist pl = new Playlist("All");
+		library.addPlaylist(pl);
 	}
 	
 	
@@ -37,7 +33,6 @@ public class Account {
 				Song s = new Song(sp[j]);
 				pl.addSong(s);
 			}
-			library.addPlaylist(pl);
 		}
 	}
 	
