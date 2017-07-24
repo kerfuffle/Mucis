@@ -16,9 +16,4 @@ public class Song {
 		this.path = path;
 	}
 	
-	public String getName()
-	{
-		return name;
-	}
-	
 }

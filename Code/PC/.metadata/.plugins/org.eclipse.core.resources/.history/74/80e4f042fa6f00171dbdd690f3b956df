@@ -20,11 +20,7 @@ public class Library {
 	{
 		for (Playlist p : playlists)
 		{
-			if (p.getName().equals(name))
-			{
-				return p;
-			}
+			if (p)
 		}
-		return null;
 	}
 }

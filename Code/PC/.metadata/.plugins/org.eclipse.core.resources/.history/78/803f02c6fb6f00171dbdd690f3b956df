@@ -15,6 +15,17 @@ public class Account {
 
 		library = new Library();
 		addPlaylists();
+		
+		printSongs();
+	}
+	
+	private void printSongs()
+	{
+		Playlist p = library.getPlaylist("Main");
+		for (Song s : p.getSongs())
+		{
+			System.out.println(s.getName());
+		}
 	}
 	
 	private void addPlaylists()

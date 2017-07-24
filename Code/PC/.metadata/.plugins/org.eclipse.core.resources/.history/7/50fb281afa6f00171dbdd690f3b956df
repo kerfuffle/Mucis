@@ -15,16 +15,4 @@ public class Library {
 	{
 		playlists.add(pl);
 	}
-	
-	public Playlist getPlaylist(String name)
-	{
-		for (Playlist p : playlists)
-		{
-			if (p.getName().equals(name))
-			{
-				return p;
-			}
-		}
-		return null;
-	}
 }

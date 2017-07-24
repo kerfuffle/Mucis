@@ -18,21 +18,12 @@ public class Playlist {
 		songs.add(s);
 	}
 	
-	public Song getSong(String name)
+	public void getSong(String name)
 	{
 		for (Song s : songs)
 		{
-			if (s.getName().equals(name))
-			{
-				return s;
-			}
+			if (s.g)
 		}
-		return null;
-	}
-	
-	public ArrayList<Song> getSongs()
-	{
-		return songs;
 	}
 	
 	public String getName()

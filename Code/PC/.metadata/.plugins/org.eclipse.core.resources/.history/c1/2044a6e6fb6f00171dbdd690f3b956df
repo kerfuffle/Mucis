@@ -19,8 +19,10 @@ public class Util {
 
 	            while((line = bufferedReader.readLine()) != null) 
 	            {
-	            	sb.append(line);
+	            	sb.append(line+"\n");
 	            }   
+
+	            sb.deleteCharAt(sb.length()-1);
 	            
 	            bufferedReader.close();         
 	        }

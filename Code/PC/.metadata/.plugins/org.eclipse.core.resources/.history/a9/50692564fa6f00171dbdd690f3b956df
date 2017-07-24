@@ -12,10 +12,15 @@ public class Account {
 	public Account(String username)
 	{
 		this.username=username;
-
+		initAccount();
+	}
+	
+	public void initAccount()
+	{
 		library = new Library();
 		addPlaylists();
 	}
+	
 	
 	private void addPlaylists()
 	{

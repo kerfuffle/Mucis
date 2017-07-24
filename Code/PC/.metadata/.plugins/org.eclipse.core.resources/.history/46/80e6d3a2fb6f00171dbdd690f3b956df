@@ -17,6 +17,12 @@ public class Account {
 		addPlaylists();
 	}
 	
+	private void printSongs()
+	{
+		Playlist p = library.getPlaylist("Main");
+		
+	}
+	
 	private void addPlaylists()
 	{
 		String data = Util.readTextFile(username);

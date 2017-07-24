@@ -11,7 +11,6 @@ import net.kerfuffle.Utilities.Util;
 import net.kerfuffle.Utilities.Network.MyNetworkCode;
 import net.kerfuffle.Utilities.Network.Packet;
 import net.kerfuffle.Utilities.Network.Server;
-import net.kerfuffle.Utilities.Network.User;
 
 public class Main {
 
@@ -39,7 +38,7 @@ public class Main {
 				if (packet.getId() == Global.LOGIN)
 				{
 					PacketLogin p = new PacketLogin(packet.getData());
-					server.addUser(new User(p.getUsername(), packet.getIp(), packet.getPort()));
+					
 				}
 			}
 		});
@@ -50,8 +49,9 @@ public class Main {
 		server.start();
 	}
 
-	public static void main(String args[]) throws SocketException
+	public static void main(String args[])
 	{
-		new Main().run();
+
+
 	}
 }
