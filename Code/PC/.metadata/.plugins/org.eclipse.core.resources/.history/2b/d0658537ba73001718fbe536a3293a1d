@@ -1,0 +1,36 @@
+package net.kerfuffle.Utilities.Network;
+
+public class TCPFileReceive implements Runnable{
+	
+	private Thread t;
+	private volatile boolean running = false;
+	private String name, path;
+	
+	public TCPFileReceive(String name, String path)
+	{
+		this.name=name;
+		this.path=path;
+	}
+	
+	public void start()
+	{
+		running = true;
+		t = new Thread(this, "TCPFileThread");
+		t.start();
+	}
+	
+	public void run()
+	{
+		while (running)
+		{
+			
+		}
+	}
+
+	
+	
+	public void close()
+	{
+		running = false;
+	}
+}

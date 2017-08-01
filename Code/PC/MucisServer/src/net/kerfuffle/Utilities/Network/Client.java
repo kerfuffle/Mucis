@@ -19,18 +19,19 @@ public class Client implements Runnable{
 	private DatagramSocket socket;
 	private InetAddress ip;
 	private int port;
-	private String threadName;
+	private String threadName, spc;
 
 	private Packet incoming = null;
 	
 	private ArrayList <User> users = new ArrayList <User>();
 
-	public Client(String threadName, InetAddress ip, int port) throws SocketException
+	public Client(String threadName, InetAddress ip, int port, String spc) throws SocketException
 	{
 		this.ip = ip;
 		this.port=port;
 		socket = new DatagramSocket();
 		this.threadName = threadName;
+		this.spc = spc;
 	}
 
 	public void close()
@@ -50,7 +51,7 @@ public class Client implements Runnable{
 		{
 			try 
 			{
-				incoming = receivePacket(socket);
+				incoming = receivePacket(socket, spc);
 				myNetworkCode.run(incoming);
 			} 
 			catch (IOException e) 
@@ -102,4 +103,14 @@ public class Client implements Runnable{
 		Packet.sendPacket(p, socket, ip, port);
 	}
 
+	
+	public void receiveFileTCP(InetAddress ip, int port)
+	{
+		
+	}
+	public void sendFileTCP()
+	{
+		
+	}
+	
 }

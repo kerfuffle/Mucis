@@ -12,18 +12,21 @@ import java.util.ArrayList;
 public class Server implements Runnable{
 	
 	private Thread t;
-	private String threadName;
+	private String threadName, spc;
 	private int port;
 	private volatile boolean running = false;
 	private MyNetworkCode myNetworkCode;
 	private DatagramSocket socket;
 	
 	private ArrayList <User> users = new ArrayList<User>();
+	private ArrayList <Integer> usedPorts = new ArrayList<Integer>();
 	
-	public Server(String threadName, int port) throws SocketException
+	public Server(String threadName, int port, String spc) throws SocketException
 	{
 		this.port = port;
+		usedPorts.add(port);
 		this.threadName = threadName;
+		this.spc=spc;
 		socket = new DatagramSocket(port);
 	}
 
@@ -46,7 +49,7 @@ public class Server implements Runnable{
 		{
 			try 
 			{
-				incoming = receivePacket(socket);
+				incoming = receivePacket(socket, spc);
 				myNetworkCode.run(incoming);
 			} 
 			catch (IOException e) 
@@ -59,6 +62,36 @@ public class Server implements Runnable{
 	public void close()
 	{
 		running = false;
+	}
+	
+	private int getUnusedPort()
+	{
+		int ret = usedPorts.get(0)+1;
+		for (Integer i : usedPorts)
+		{
+			if (ret == i)
+			{
+				ret++;
+			}
+		}
+		usedPorts.add(ret);
+		return ret;
+	}
+	
+	public void removeUsedPort(int port)
+	{
+		usedPorts.remove(new Integer(port));
+	}
+	
+	public void receiveFileTCP(String path, int fileSize)
+	{
+		TCPFileReceive fr = new TCPFileReceive(getUnusedPort(), path, fileSize, this);
+		fr.start();
+	}
+	public void sendFileTCP(String path)
+	{
+		TCPFileSend fs = new TCPFileSend();
+		
 	}
 	
 	public int getPort()

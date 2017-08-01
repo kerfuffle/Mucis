@@ -72,14 +72,14 @@ public class Packet {
 		socket.send(sendPacket);
 	}
 	
-	public static Packet receivePacket(DatagramSocket socket) throws IOException
+	public static Packet receivePacket(DatagramSocket socket, String spc) throws IOException
 	{
 		byte buffer[] = new byte[256];
 		DatagramPacket receivePacket = new DatagramPacket(buffer, buffer.length);
 		socket.receive(receivePacket);
 		
 		String data = new String(receivePacket.getData());
-		String sp[] = data.split(",");
+		String sp[] = data.split(spc);
 		
 		int id = Integer.parseInt(sp[0]);
 		Packet p = new Packet(data, id, receivePacket.getAddress(), receivePacket.getPort());

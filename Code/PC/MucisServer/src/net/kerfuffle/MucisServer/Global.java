@@ -8,4 +8,7 @@ public class Global {
 							ADD_SONG = 1,
 							REMOVE_SONG = 2,
 							LIBRARY = 3;	
+	
+	public static final int CLIENT = 0, SERVER = 1;
+	public static int TYPE = SERVER;
 }

@@ -30,7 +30,7 @@ public class Main {
 		}
 
 		port = Integer.parseInt(JOptionPane.showInputDialog("Port"));
-		server = new Server("Mucis Server", port);
+		server = new Server("Mucis Server", port, Global.SP);
 
 		server.setMyNetworkCode(new MyNetworkCode()
 		{
