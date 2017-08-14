@@ -1,17 +1,21 @@
 package net.kerfuffle.MucisServer;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import net.kerfuffle.MucisServer.Packets.PacketAddSong;
+import net.kerfuffle.MucisServer.Packets.PacketError;
 import net.kerfuffle.MucisServer.Packets.PacketLogin;
 import net.kerfuffle.Utilities.Util;
 import net.kerfuffle.Utilities.Network.MyNetworkCode;
 import net.kerfuffle.Utilities.Network.Packet;
 import net.kerfuffle.Utilities.Network.Server;
 import net.kerfuffle.Utilities.Network.User;
+import static net.kerfuffle.MucisServer.Global.*;
 
 public class Main {
 
@@ -30,21 +34,70 @@ public class Main {
 		}
 
 		port = Integer.parseInt(JOptionPane.showInputDialog("Port"));
-		server = new Server("Mucis Server", port, Global.SP);
+		server = new Server("Mucis Server", port, SP);
 
 		server.setMyNetworkCode(new MyNetworkCode()
 		{
-			public void run(Packet packet)
+			public void run(Packet packet) throws IOException
 			{
-				if (packet.getId() == Global.LOGIN)
+				if (packet.getId() == LOGIN)
 				{
 					PacketLogin p = new PacketLogin(packet.getData());
-					server.addUser(new User(p.getUsername(), packet.getIp(), packet.getPort()));
+					
+					if (userExists(p.getUsername()))
+					{
+						server.addUser(new User(p.getUsername(), packet.getIp(), packet.getPort()));
+					}
+					else
+					{
+						PacketError pe = new PacketError(USERNAME_NO_EXIST, "There is no account with that username.");
+						server.sendToUser(pe, packet.getIp(), packet.getPort());
+					}
+				}
+				if (packet.getId() == ADD_SONG)
+				{
+					PacketAddSong p = new PacketAddSong(packet.getData());
+					int filePort = server.getUnusedPort();
+					
+					PacketAddSong pas = new PacketAddSong(filePort);
+					server.sendToUser(pas, packet.getIp(), packet.getPort());
+					
+					Account acc = getAccountByName(server.getUsername(packet.getIp(), packet.getPort()));
+					
+					
+					server.receiveFileTCP(homePath + "/" + p.getFileName(), filePort, p.getFileSize());
+				}
+				if (packet.getId() == DISCONNECT)
+				{
+					server.removeUser(packet.getIp(), packet.getPort());
 				}
 			}
 		});
 	}
 
+	private Account getAccountByName(String name)
+	{
+		for (Account a : accounts)
+		{
+			if (a.getUsername().equals(name))
+			{
+				return a;
+			}
+		}
+		return null;
+	}
+	private boolean userExists(String name)
+	{
+		for (Account a : accounts)
+		{
+			if (a.getUsername().equals(name))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void run()
 	{
 		server.start();

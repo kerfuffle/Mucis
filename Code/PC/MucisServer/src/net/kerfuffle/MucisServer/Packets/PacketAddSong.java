@@ -6,7 +6,7 @@ import net.kerfuffle.Utilities.Network.Packet;
 public class PacketAddSong extends Packet{
 
 	private String fileName;
-	private int fileSize, port;
+	private int fileSize;
 	
 	public PacketAddSong(CharSequence data)
 	{
@@ -14,7 +14,6 @@ public class PacketAddSong extends Packet{
 		String sp[] = data.toString().split(Global.SP);
 		fileName = sp[1];
 		fileSize = Integer.parseInt(sp[2]);
-		port = Integer.parseInt(sp[3]);
 	}
 	public PacketAddSong(int port)
 	{
@@ -29,9 +28,5 @@ public class PacketAddSong extends Packet{
 	public int getFileSize()
 	{
 		return fileSize;
-	}
-	public int getFilePort()
-	{
-		return port;
 	}
 }

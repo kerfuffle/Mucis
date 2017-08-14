@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 public class Library {
 
+	private String homePath;
 	private ArrayList<Playlist> playlists = new ArrayList<Playlist>();
 	
-	public Library()
+	public Library(String homePath)
 	{
-		
+		this.homePath = homePath;
 	}
 	
 	public void addPlaylist(Playlist pl)

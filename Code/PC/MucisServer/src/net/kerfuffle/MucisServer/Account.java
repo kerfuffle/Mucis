@@ -5,23 +5,25 @@ import net.kerfuffle.Utilities.Util;
 public class Account {
 
 	private String username;
-	private String password;
+	private String data;
 	
 	private Library library;
 	
-	public Account(String username)
+	public Account(String username, String homePath)
 	{
 		this.username=username;
 
-		library = new Library();
-		addPlaylists();
+		data = Util.readTextFile(username);
+		String sp[] = data.split("?");
+		
+		library = new Library(sp[0]);
+		loadPlaylists();
 	}
 	
-	private void addPlaylists()
+	private void loadPlaylists()
 	{
-		String data = Util.readTextFile(username);
-		
-		String sp0[] = data.split("%");
+		String sp00[] = data.split("?");
+		String sp0[] = sp00[1].split("%");
 		
 		for (int i = 0 ; i < sp0.length; i++)
 		{
@@ -36,4 +38,10 @@ public class Account {
 		}
 	}
 	
+	
+	
+	public String getUsername()
+	{
+		return username;
+	}
 }
