@@ -5,18 +5,15 @@
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="net.kerfuffle.Utilities.Util"/>
 <fullyQualifiedTypeName name="net.kerfuffle.Utilities.Network.Server"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="net.kerfuffle.Utilities.Network.MyNetworkCode"/>
 <fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Packets.PacketLogin"/>
 <fullyQualifiedTypeName name="net.kerfuffle.Utilities.Network.User"/>
-<fullyQualifiedTypeName name="net.kerfuffle.Utilities.Network.Packet"/>
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
 <fullyQualifiedTypeName name="java.io.OutputStream"/>
 <fullyQualifiedTypeName name="java.net.Socket"/>
-<fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Global"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
@@ -25,4 +22,15 @@
 <fullyQualifiedTypeName name="java.nio.file.Paths"/>
 <fullyQualifiedTypeName name="java.net.ServerSocket"/>
 <fullyQualifiedTypeName name="java.net.InetAddress"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketLogin"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketAddSong"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Global"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Packets.PacketError"/>
+<fullyQualifiedTypeName name="java.io.BufferedWriter"/>
+<fullyQualifiedTypeName name="java.io.FileWriter"/>
+<fullyQualifiedTypeName name="net.kerfuffle.Utilities.Util"/>
+<fullyQualifiedTypeName name="net.kerfuffle.Utilities.Network.Packet"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Global"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketError"/>
 </qualifiedTypeNameHistroy>

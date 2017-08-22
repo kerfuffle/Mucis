@@ -13,5 +13,5 @@ public class Global {
 	
 	public static final int USERNAME_NO_EXIST = 0;
 	
-	public static String homePath = "C:/Users/rdavis/desktop/mucis";
+	public static String homePath = "C:/Users/rdavis/desktop/mucis/";
 }

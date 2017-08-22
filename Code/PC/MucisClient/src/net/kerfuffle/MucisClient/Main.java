@@ -8,6 +8,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 import net.kerfuffle.MucisClient.Packets.PacketAddSong;
+import net.kerfuffle.MucisClient.Packets.PacketError;
 import net.kerfuffle.MucisClient.Packets.PacketLogin;
 import net.kerfuffle.Utilities.Util;
 import net.kerfuffle.Utilities.Network.Client;
@@ -34,7 +35,7 @@ public class Main {
 		client.sendPacket(pl);
 
 		client.setMyNetworkCode(new MyNetworkCode() {
-			public void run(Packet packet)
+			public void run(Packet packet) throws IOException
 			{
 				if (packet.getId() == Global.ADD_SONG)
 				{
@@ -44,6 +45,17 @@ public class Main {
 					byte file[] = Util.readFile(path);
 					
 					client.sendFileTCP(file, pas.getFilePort());
+				}
+				if (packet.getId() == Global.ERROR)
+				{
+					PacketError p = new PacketError(packet.getData());
+					
+					if (p.getType() == Global.USERNAME_NO_EXIST)
+					{
+						String username = JOptionPane.showInputDialog("Username");
+						PacketLogin pl = new PacketLogin(username);
+						client.sendPacket(pl);
+					}
 				}
 			}
 		});

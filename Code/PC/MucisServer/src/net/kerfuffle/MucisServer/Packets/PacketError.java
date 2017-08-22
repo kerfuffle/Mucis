@@ -5,9 +5,9 @@ import net.kerfuffle.Utilities.Network.Packet;
 
 public class PacketError extends Packet{
 
-	public PacketError(int id, String message)
+	public PacketError(int type, String message)
 	{
-		super (Global.ERROR, Global.SP, String.valueOf(id), message);
+		super (Global.ERROR, Global.SP, String.valueOf(type), message);
 	}
 	
 }

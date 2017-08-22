@@ -20,5 +20,9 @@ public class Song {
 	{
 		return name;
 	}
+	public String getPath()
+	{
+		return path;
+	}
 	
 }

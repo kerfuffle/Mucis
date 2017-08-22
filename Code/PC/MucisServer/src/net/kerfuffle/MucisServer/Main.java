@@ -63,9 +63,9 @@ public class Main {
 					server.sendToUser(pas, packet.getIp(), packet.getPort());
 					
 					Account acc = getAccountByName(server.getUsername(packet.getIp(), packet.getPort()));
+					acc.library.addSong(new Song(p.getFileName(), acc.library.getHomePath()));
 					
-					
-					server.receiveFileTCP(homePath + "/" + p.getFileName(), filePort, p.getFileSize());
+					server.receiveFileTCP(acc.library.getHomePath() + "/" + p.getFileName(), filePort, p.getFileSize());
 				}
 				if (packet.getId() == DISCONNECT)
 				{
