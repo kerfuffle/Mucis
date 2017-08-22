@@ -109,7 +109,7 @@ public class Client implements Runnable{
 		TCPFileReceive fr = new TCPFileReceive(ip, port, path, fileSize);
 		fr.start();
 	}
-	public void sendFileTCP(byte file[])
+	public void sendFileTCP(byte file[], int port)
 	{
 		TCPFileSend fs = new TCPFileSend(file, ip, port);
 		fs.start();

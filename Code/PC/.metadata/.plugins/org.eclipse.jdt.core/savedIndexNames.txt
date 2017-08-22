@@ -1,21 +1,3 @@
 INDEX VERSION 1.130+C:\Users\rdavis\Documents\GitHub\Mucis\Code\PC\.metadata\.plugins\org.eclipse.jdt.core
-3554032198.index
-2475401368.index
-806556397.index
-1241032529.index
-3125979650.index
-3570497266.index
-4194509408.index
-914924236.index
-1510137023.index
-3919325409.index
-1078194832.index
-1028420908.index
-589541979.index
-2422426042.index
-4137163996.index
-1085796001.index
-3208752909.index
-2247404230.index
-1762489263.index
-2521783677.index
+3218296663.index
+28188776.index

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
@@ -29,8 +28,9 @@
 <fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Packets.PacketError"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
-<fullyQualifiedTypeName name="net.kerfuffle.Utilities.Util"/>
 <fullyQualifiedTypeName name="net.kerfuffle.Utilities.Network.Packet"/>
 <fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Global"/>
 <fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketError"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="net.kerfuffle.Utilities.Util"/>
 </qualifiedTypeNameHistroy>
