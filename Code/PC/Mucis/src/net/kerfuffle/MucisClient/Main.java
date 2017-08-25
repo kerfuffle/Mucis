@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import net.kerfuffle.MucisClient.Packets.PacketAddSong;
 import net.kerfuffle.MucisClient.Packets.PacketError;
 import net.kerfuffle.MucisClient.Packets.PacketLogin;
+import net.kerfuffle.MucisClient.Packets.PacketRemoveSong;
 import net.kerfuffle.Utilities.Util;
 import net.kerfuffle.Utilities.Network.Client;
 import net.kerfuffle.Utilities.Network.MyNetworkCode;
@@ -20,6 +21,8 @@ public class Main {
 	private Client client;
 	private InetAddress ip;
 	private int port;
+	
+	private String tempPath = "";
 
 	public Main() throws IOException
 	{
@@ -41,8 +44,7 @@ public class Main {
 				{
 					PacketAddSong pas = new PacketAddSong(packet.getData());
 					
-					String path = "C:/users/rdavis/desktop/Snapchat-336644946.jpg";
-					byte file[] = Util.readFile(path);
+					byte file[] = Util.readFile(tempPath);
 					
 					client.sendFileTCP(file, pas.getFilePort());
 				}
@@ -63,8 +65,8 @@ public class Main {
 	
 	public void sendTestFile() throws IOException
 	{
-		String path = "C:/users/rdavis/desktop/Snapchat-336644946.jpg";
-		byte file[] = Util.readFile(path);
+		tempPath = "C:/users/rdavis/desktop/Snapchat-336644946.jpg";
+		byte file[] = Util.readFile(tempPath);
 		
 		PacketAddSong pas = new PacketAddSong("Snapchat-336644946.jpg", file.length);
 		client.sendPacket(pas);
@@ -87,6 +89,26 @@ public class Main {
 			else if (in.equals("quit"))
 			{
 				running = false;
+			}
+			else
+			{
+				String sp[] = in.split(" ");
+				
+				if (sp[0].equals("addsong"))
+				{
+					tempPath = sp[1];
+					byte file[] = Util.readFile(tempPath);
+				
+					String sp1[] = (sp[1].contains("/")) ? sp[1].split("/") : sp[1].split("\\");
+					
+					PacketAddSong pas = new PacketAddSong(sp1[sp1.length-1], file.length);
+					client.sendPacket(pas);
+				}
+				else if (sp[0].equals("removesong"))
+				{
+					PacketRemoveSong prs = new PacketRemoveSong(sp[1]);
+					client.sendPacket(prs);
+				}
 			}
 		}
 		

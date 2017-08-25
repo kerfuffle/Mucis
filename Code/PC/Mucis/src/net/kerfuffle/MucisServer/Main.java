@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import net.kerfuffle.MucisServer.Packets.PacketAddSong;
 import net.kerfuffle.MucisServer.Packets.PacketError;
 import net.kerfuffle.MucisServer.Packets.PacketLogin;
+import net.kerfuffle.MucisServer.Packets.PacketRemoveSong;
 import net.kerfuffle.Utilities.Util;
 import net.kerfuffle.Utilities.Network.MyNetworkCode;
 import net.kerfuffle.Utilities.Network.Packet;
@@ -66,6 +67,12 @@ public class Main {
 					acc.library.addSong(new Song(p.getFileName(), acc.library.getHomePath()));
 					
 					server.receiveFileTCP(acc.library.getHomePath() + "/" + p.getFileName(), filePort, p.getFileSize());
+				}
+				if (packet.getId() == REMOVE_SONG)
+				{
+					PacketRemoveSong p = new PacketRemoveSong(packet.getData());
+					Account acc = getAccountByName(server.getUsername(packet.getIp(), packet.getPort()));
+					acc.library.removeSong(p.getFileName());
 				}
 				if (packet.getId() == DISCONNECT)
 				{
