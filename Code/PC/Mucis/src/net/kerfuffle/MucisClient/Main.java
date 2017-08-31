@@ -111,7 +111,7 @@ public class Main {
 				}
 			}
 		}
-		
+		scan.close();
 	}
 
 	public static void main (String args[]) throws IOException

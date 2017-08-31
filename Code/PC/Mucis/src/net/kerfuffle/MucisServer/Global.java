@@ -9,7 +9,8 @@ public class Global {
 							REMOVE_SONG = 2,
 							LIBRARY = 3,
 							ERROR = 4,
-							DISCONNECT = 5;	
+							DISCONNECT = 5,
+							SYNC = 6;	
 	
 	public static final int USERNAME_NO_EXIST = 0;
 	
