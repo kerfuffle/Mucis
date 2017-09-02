@@ -21,7 +21,6 @@
 <fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketLogin"/>
 <fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketAddSong"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Global"/>
 <fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Packets.PacketError"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
@@ -29,10 +28,17 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="net.kerfuffle.Utilities.Util"/>
 <fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Packets.PacketRemoveSong"/>
-<fullyQualifiedTypeName name="net.kerfuffle.Utilities.Network.Packet"/>
-<fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Global"/>
 <fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketRemoveSong"/>
 <fullyQualifiedTypeName name="java.nio.file.Files"/>
 <fullyQualifiedTypeName name="java.nio.file.Path"/>
 <fullyQualifiedTypeName name="java.nio.file.Paths"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Packets.PacketSync"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketSync"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Packets.PacketSyncServerSendSong"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Global"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisServer.Packets.PacketSyncServerReceiveSong"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketSyncServerReceiveSong"/>
+<fullyQualifiedTypeName name="net.kerfuffle.Utilities.Network.Packet"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Global"/>
+<fullyQualifiedTypeName name="net.kerfuffle.MucisClient.Packets.PacketSyncServerSendSong"/>
 </qualifiedTypeNameHistroy>

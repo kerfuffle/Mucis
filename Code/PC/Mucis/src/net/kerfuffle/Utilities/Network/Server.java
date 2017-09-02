@@ -83,9 +83,9 @@ public class Server implements Runnable{
 		usedPorts.remove(new Integer(port));
 	}
 	
-	public void receiveFileTCP(String path, int port, int fileSize)
+	public void receiveFileTCP(String path, int port)
 	{
-		TCPFileReceive fr = new TCPFileReceive(port, path, fileSize, this);
+		TCPFileReceive fr = new TCPFileReceive(port, path, this);
 		fr.start();
 	}
 	public void sendFileTCP(byte file[], int port)

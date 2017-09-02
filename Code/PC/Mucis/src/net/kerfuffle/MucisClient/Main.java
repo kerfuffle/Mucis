@@ -11,6 +11,9 @@ import net.kerfuffle.MucisClient.Packets.PacketAddSong;
 import net.kerfuffle.MucisClient.Packets.PacketError;
 import net.kerfuffle.MucisClient.Packets.PacketLogin;
 import net.kerfuffle.MucisClient.Packets.PacketRemoveSong;
+import net.kerfuffle.MucisClient.Packets.PacketSync;
+import net.kerfuffle.MucisClient.Packets.PacketSyncServerReceiveSong;
+import net.kerfuffle.MucisClient.Packets.PacketSyncServerSendSong;
 import net.kerfuffle.Utilities.Util;
 import net.kerfuffle.Utilities.Network.Client;
 import net.kerfuffle.Utilities.Network.MyNetworkCode;
@@ -23,6 +26,7 @@ public class Main {
 	private int port;
 	
 	private String tempPath = "";
+	private String homePath = "C:/users/rdavis/desktop/mucisclient/";
 
 	public Main() throws IOException
 	{
@@ -47,6 +51,28 @@ public class Main {
 					byte file[] = Util.readFile(tempPath);
 					
 					client.sendFileTCP(file, pas.getFilePort());
+				}
+				if (packet.getId() == Global.SYNC_SERVER_RECEIVE_SONG)
+				{
+					PacketSyncServerReceiveSong p = new PacketSyncServerReceiveSong(packet.getData());
+					
+					byte file[] = Util.readFile(lookupSongPath(p.getFileName()));	//TODO access denied exception?
+					
+					PacketAddSong pas = new PacketAddSong(p.getFileName(), file.length);
+					client.sendPacket(pas);
+				}
+				if (packet.getId() == Global.SYNC_SERVER_SEND_SONG)
+				{
+					PacketSyncServerSendSong p = new PacketSyncServerSendSong(packet.getData());
+					client.receiveFileTCP(p.getFilePort(), Global.homePath+p.getFileName());
+				}
+				if (packet.getId() == Global.SYNC)
+				{
+					PacketSync p = new PacketSync(packet.getData());
+					
+					byte file[] = Util.readFile(homePath + "songlist.dab"); 		// need a home path for client
+					
+					client.sendFileTCP(file, p.getFilePort());
 				}
 				if (packet.getId() == Global.ERROR)
 				{
@@ -90,6 +116,11 @@ public class Main {
 			{
 				running = false;
 			}
+			else if (in.equals("sync"))
+			{
+				PacketSync ps = new PacketSync();
+				client.sendPacket(ps);
+			}
 			else
 			{
 				String sp[] = in.split(" ");
@@ -112,6 +143,22 @@ public class Main {
 			}
 		}
 		scan.close();
+	}
+	
+	private String lookupSongPath(String song)
+	{
+		String data = Util.readTextFile(Global.homePath + "songlist.dab");
+		String sp0[] = data.split(">");
+		
+		for (int i = 0; i < sp0.length; i++)
+		{
+			String sp[] = sp0[i].split("\\?");
+			if (sp[0].equals(song))
+			{
+				return sp[1];
+			}
+		}
+		return "[NOT FOUND]";
 	}
 
 	public static void main (String args[]) throws IOException

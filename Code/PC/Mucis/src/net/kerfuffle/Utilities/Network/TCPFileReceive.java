@@ -14,26 +14,23 @@ public class TCPFileReceive implements Runnable{
 	private Thread t;
 	private volatile boolean running = false;
 	private String path;
-	private int fileSize = -1;
 	private InetAddress ip;
 	private int port;
 	private boolean isServer = false;
 	private Server server;
 
 
-	public TCPFileReceive(InetAddress ip, int port, String path, int fileSize)
+	public TCPFileReceive(InetAddress ip, int port, String path)
 	{
 		this.path = path;
-		this.fileSize = fileSize;
 		this.ip = ip;
 		this.port = port;
 		isServer = false;
 	}
-	public TCPFileReceive(int port, String path, int fileSize, Server server)
+	public TCPFileReceive(int port, String path, Server server)
 	{
 		this.port = port;
 		this.path = path;
-		this.fileSize = fileSize;
 		isServer = true;
 		this.server=server;
 	}

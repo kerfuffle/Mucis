@@ -9,9 +9,12 @@ public class Global {
 							REMOVE_SONG = 2,
 							LIBRARY = 3,
 							ERROR = 4,
-							DISCONNECT = 5;	
+							DISCONNECT = 5,
+							SYNC = 6,
+							SYNC_SERVER_SEND_SONG = 7,
+							SYNC_SERVER_RECEIVE_SONG = 8;	
 	
 	public static final int USERNAME_NO_EXIST = 0;
 	
-	public static String homePath = "C:/Users/rdavis/desktop/mucis";
+	public static String homePath = "C:/Users/rdavis/desktop/mucisclient/";
 }

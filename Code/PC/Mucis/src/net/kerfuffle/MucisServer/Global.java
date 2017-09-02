@@ -10,7 +10,9 @@ public class Global {
 							LIBRARY = 3,
 							ERROR = 4,
 							DISCONNECT = 5,
-							SYNC = 6;	
+							SYNC = 6,
+							SYNC_SERVER_SEND_SONG = 7,
+							SYNC_SERVER_RECEIVE_SONG = 8;	
 	
 	public static final int USERNAME_NO_EXIST = 0;
 	
